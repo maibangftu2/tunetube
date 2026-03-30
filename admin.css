@@ -639,3 +639,156 @@ textarea.field-input {
 .sidebar-overlay.active {
     display: block;
 }
+
+/* === Deploy Button === */
+.btn-admin-deploy {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    border: none;
+}
+
+.btn-admin-deploy:hover {
+    background: linear-gradient(135deg, #219150, #27ae60);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+    transform: translateY(-1px);
+}
+
+/* === Deploy Modal === */
+.deploy-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.deploy-modal-overlay.active {
+    display: flex;
+}
+
+.deploy-modal {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: 16px;
+    width: 560px;
+    max-width: 95vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.deploy-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.deploy-modal-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--admin-text);
+}
+
+.deploy-modal-close {
+    background: none;
+    border: none;
+    color: var(--admin-text-muted);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.deploy-modal-close:hover {
+    color: var(--admin-text);
+}
+
+.deploy-modal-body {
+    padding: 28px;
+}
+
+.deploy-modal-body a {
+    color: var(--admin-purple-light);
+    text-decoration: none;
+}
+
+.deploy-modal-body a:hover {
+    text-decoration: underline;
+}
+
+.deploy-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 28px;
+    border-top: 1px solid var(--admin-border);
+}
+
+/* Deploy Progress */
+.deploy-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+    text-align: center;
+}
+
+.deploy-progress-icon {
+    font-size: 48px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.deploy-progress-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--admin-text);
+}
+
+.deploy-progress-bar {
+    width: 100%;
+    max-width: 300px;
+    height: 6px;
+    background: var(--admin-border);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.deploy-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--admin-purple), #2ecc71);
+    border-radius: 3px;
+    transition: width 0.6s ease, background 0.4s ease;
+}
+
+/* Responsive for topbar actions */
+@media (max-width: 768px) {
+    .topbar-actions {
+        flex-wrap: wrap;
+    }
+    .topbar-actions .btn-admin {
+        font-size: 11px;
+        padding: 8px 12px;
+    }
+}

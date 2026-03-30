@@ -87,9 +87,17 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
                         Reset
                     </button>
+                    <button class="btn-admin btn-admin-outline" id="btn-export" title="Download content.json">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                        Export JSON
+                    </button>
                     <button class="btn-admin btn-admin-primary" id="btn-save">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
                         Save & Publish
+                    </button>
+                    <button class="btn-admin btn-admin-deploy" id="btn-deploy" title="Deploy to GitHub Pages">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        🚀 Deploy to GitHub
                     </button>
                 </div>
             </div>
@@ -430,6 +438,54 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- DEPLOY MODAL -->
+                <div class="deploy-modal-overlay" id="deploy-modal-overlay">
+                    <div class="deploy-modal">
+                        <div class="deploy-modal-header">
+                            <h2>🚀 Deploy to GitHub Pages</h2>
+                            <button class="deploy-modal-close" id="deploy-modal-close">&times;</button>
+                        </div>
+                        <div class="deploy-modal-body">
+                            <div class="deploy-step" id="deploy-step-token">
+                                <p style="color:#b0b0b0;margin-bottom:16px">Deploy your content changes directly to GitHub. Changes will be live on your website within 1-2 minutes.</p>
+                                <div class="field-group">
+                                    <label class="field-label">GitHub Personal Access Token</label>
+                                    <input type="password" class="field-input" id="github-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+                                    <span class="field-hint">Create a token at <a href="https://github.com/settings/tokens/new" target="_blank" style="color:#7B42BC">github.com/settings/tokens</a> with "Contents" read/write permission</span>
+                                </div>
+                                <div class="field-row" style="margin-top:12px">
+                                    <div class="field-group">
+                                        <label class="field-label">Repository Owner</label>
+                                        <input type="text" class="field-input" id="github-owner" value="maibangftu2">
+                                    </div>
+                                    <div class="field-group">
+                                        <label class="field-label">Repository Name</label>
+                                        <input type="text" class="field-input" id="github-repo" value="tunetube">
+                                    </div>
+                                </div>
+                                <div class="field-group" style="margin-top:12px">
+                                    <label class="field-label">Commit Message</label>
+                                    <input type="text" class="field-input" id="github-message" value="Update content via CMS Admin">
+                                </div>
+                                <div style="display:flex;gap:12px;margin-top:20px">
+                                    <label style="display:flex;align-items:center;gap:6px;color:#b0b0b0;font-size:13px;cursor:pointer">
+                                        <input type="checkbox" id="github-remember"> Remember token in this browser
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="deploy-progress" id="deploy-progress" style="display:none">
+                                <div class="deploy-progress-icon" id="deploy-progress-icon">⏳</div>
+                                <div class="deploy-progress-text" id="deploy-progress-text">Deploying...</div>
+                                <div class="deploy-progress-bar"><div class="deploy-progress-fill" id="deploy-progress-fill"></div></div>
+                            </div>
+                        </div>
+                        <div class="deploy-modal-footer" id="deploy-modal-footer">
+                            <button class="btn-admin btn-admin-outline" id="deploy-cancel">Cancel</button>
+                            <button class="btn-admin btn-admin-deploy" id="deploy-confirm">🚀 Deploy Now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -454,6 +510,8 @@
             setupNavigation();
             setupImagePreviews();
             setupSave();
+            setupExport();
+            setupDeploy();
             setupReset();
             setupMobileSidebar();
         }
@@ -528,17 +586,171 @@
             });
         }
 
-        // === Save ===
+        // === Save (localStorage for local preview) ===
         function setupSave() {
             document.getElementById('btn-save').addEventListener('click', () => {
                 collectFields();
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
-                showToast('✓ Content saved & published!', 'success');
+                showToast('✓ Content saved locally! Use "Deploy to GitHub" to publish permanently.', 'success');
 
                 // Refresh preview
                 const iframe = document.getElementById('preview-iframe');
                 if (iframe) iframe.src = iframe.src;
             });
+        }
+
+        // === Export content.json ===
+        function setupExport() {
+            document.getElementById('btn-export').addEventListener('click', () => {
+                collectFields();
+                const json = JSON.stringify(content, null, 2);
+                const blob = new Blob([json], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'content.json';
+                a.click();
+                URL.revokeObjectURL(url);
+                showToast('📥 content.json downloaded! Replace the file in your project and push to GitHub.', 'info');
+            });
+        }
+
+        // === Deploy to GitHub ===
+        function setupDeploy() {
+            const overlay = document.getElementById('deploy-modal-overlay');
+            const btnDeploy = document.getElementById('btn-deploy');
+            const btnClose = document.getElementById('deploy-modal-close');
+            const btnCancel = document.getElementById('deploy-cancel');
+            const btnConfirm = document.getElementById('deploy-confirm');
+
+            // Load saved token
+            const savedToken = localStorage.getItem('tunetube_gh_token');
+            if (savedToken) {
+                document.getElementById('github-token').value = savedToken;
+                document.getElementById('github-remember').checked = true;
+            }
+
+            btnDeploy.addEventListener('click', () => {
+                collectFields();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+                overlay.classList.add('active');
+            });
+
+            btnClose.addEventListener('click', () => overlay.classList.remove('active'));
+            btnCancel.addEventListener('click', () => overlay.classList.remove('active'));
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) overlay.classList.remove('active');
+            });
+
+            btnConfirm.addEventListener('click', async () => {
+                const token = document.getElementById('github-token').value.trim();
+                const owner = document.getElementById('github-owner').value.trim();
+                const repo = document.getElementById('github-repo').value.trim();
+                const message = document.getElementById('github-message').value.trim();
+                const remember = document.getElementById('github-remember').checked;
+
+                if (!token) { showToast('Please enter your GitHub token', 'error'); return; }
+                if (!owner || !repo) { showToast('Please enter owner and repo', 'error'); return; }
+
+                // Save token if requested
+                if (remember) {
+                    localStorage.setItem('tunetube_gh_token', token);
+                } else {
+                    localStorage.removeItem('tunetube_gh_token');
+                }
+
+                // Show progress
+                document.getElementById('deploy-step-token').style.display = 'none';
+                document.getElementById('deploy-progress').style.display = 'flex';
+                document.getElementById('deploy-modal-footer').style.display = 'none';
+
+                try {
+                    await deployToGitHub(token, owner, repo, message);
+                } catch(err) {
+                    document.getElementById('deploy-progress-icon').textContent = '❌';
+                    document.getElementById('deploy-progress-text').textContent = 'Deploy failed: ' + err.message;
+                    document.getElementById('deploy-progress-fill').style.width = '100%';
+                    document.getElementById('deploy-progress-fill').style.background = '#e74c3c';
+                    setTimeout(() => resetDeployModal(), 4000);
+                }
+            });
+        }
+
+        async function deployToGitHub(token, owner, repo, message) {
+            const progress = document.getElementById('deploy-progress-fill');
+            const statusText = document.getElementById('deploy-progress-text');
+            const icon = document.getElementById('deploy-progress-icon');
+
+            // Step 1: Get current content.json SHA
+            statusText.textContent = 'Fetching current file...';
+            progress.style.width = '25%';
+
+            const getRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content.json`, {
+                headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+            });
+
+            if (!getRes.ok && getRes.status !== 404) {
+                throw new Error('Cannot access repo. Check your token permissions.');
+            }
+
+            let sha = null;
+            if (getRes.ok) {
+                const fileData = await getRes.json();
+                sha = fileData.sha;
+            }
+
+            // Step 2: Update content.json
+            statusText.textContent = 'Uploading new content...';
+            progress.style.width = '60%';
+
+            const newContent = JSON.stringify(content, null, 2);
+            const encoded = btoa(unescape(encodeURIComponent(newContent)));
+
+            const body = {
+                message: message || 'Update content via CMS Admin',
+                content: encoded,
+                branch: 'main'
+            };
+            if (sha) body.sha = sha;
+
+            const putRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/content.json`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+
+            if (!putRes.ok) {
+                const err = await putRes.json();
+                throw new Error(err.message || 'Failed to update file');
+            }
+
+            // Step 3: Success
+            statusText.textContent = '✅ Deployed! Site will update in 1-2 minutes.';
+            progress.style.width = '100%';
+            progress.style.background = '#27ae60';
+            icon.textContent = '🎉';
+
+            showToast('🚀 Deployed to GitHub Pages!', 'success');
+
+            // Also save to localStorage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(content));
+
+            setTimeout(() => resetDeployModal(), 4000);
+        }
+
+        function resetDeployModal() {
+            const overlay = document.getElementById('deploy-modal-overlay');
+            overlay.classList.remove('active');
+            document.getElementById('deploy-step-token').style.display = '';
+            document.getElementById('deploy-progress').style.display = 'none';
+            document.getElementById('deploy-modal-footer').style.display = '';
+            document.getElementById('deploy-progress-fill').style.width = '0%';
+            document.getElementById('deploy-progress-fill').style.background = '';
+            document.getElementById('deploy-progress-icon').textContent = '⏳';
         }
 
         // === Reset ===
