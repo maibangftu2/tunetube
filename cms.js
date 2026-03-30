@@ -102,14 +102,8 @@ const CMS = {
                     wall.innerHTML = '';
                     c.brandWall.forEach((brand, i) => {
                         const div = document.createElement('div');
-                        div.className = `polaroid polaroid-${i + 1}`;
-                        div.setAttribute('data-animate', 'rotate-in');
-                        div.innerHTML = `
-                            <div class="polaroid-inner">
-                                <img src="${this.escapeHtml(brand.image)}" alt="${this.escapeHtml(brand.name)}">
-                            </div>
-                            <div class="polaroid-label">${this.escapeHtml(brand.name)}</div>
-                        `;
+                        div.className = `brand-wall-item brand-wall-${i + 1}`;
+                        div.innerHTML = `<img src="${this.escapeHtml(brand.image)}" alt="${this.escapeHtml(brand.name)}">`;
                         wall.appendChild(div);
                     });
                 }

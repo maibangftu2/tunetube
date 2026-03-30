@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     : index * 80;
                 
                 setTimeout(() => {
-                    entry.target.classList.add('animated');
+                    entry.target.classList.add('visible');
                 }, delay);
                 observer.unobserve(entry.target);
             }
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // === Smooth Section Reveal ===
-    const sections = document.querySelectorAll('.for-labels-section, .for-brands-section, .wishlist-section, .labels-hero-content');
+    const sections = document.querySelectorAll('.for-labels-section, .for-brands-section, .labels-hero-content');
     
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -234,16 +234,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const brandObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const cards = entry.target.querySelectorAll('.polaroid');
+                    const cards = entry.target.querySelectorAll('.brand-wall-item');
                     cards.forEach((card, i) => {
                         setTimeout(() => {
-                            card.style.opacity = '1';
-                        }, i * 150);
+                            card.classList.add('show');
+                        }, i * 200);
                     });
                     brandObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.2 });
+        }, { threshold: 0.15 });
         
         brandObserver.observe(brandWall);
     }
