@@ -52,22 +52,22 @@
     { "name": "Riêng tư tuyệt đối", "image": "images/labels-artist5.png" }
   ],
   "labelsPage": {
-    "heroTitle": "LET OUR TUNES TAKE YOUR BRAND TO THE NEXT LEVEL",
-    "backgroundImage": "images/labels-page-bg.png",
-    "ctaText": "JOIN NOW",
+    "heroTitle": "BENEFITS FOR MUSIC LABELS IN VIETNAM",
+    "backgroundImage": "images/labels-bg.png",
+    "ctaText": "JOIN US",
     "ctaLink": "submit-request.html",
     "benefits": [
       {
-        "title": "Promotion",
-        "description": "Put the song in front of your target demographics through the world's largest advertising platforms."
+        "title": "GLOBAL EXPOSURE",
+        "description": "With our strong network of marketing agencies & production houses all around the world, TuneTube will make sure your music be heard when suitable need comes up."
       },
       {
-        "title": "Data",
-        "description": "Receive regular reporting from top-notch Marketing Analysts powered by insights from 200M+ paid ad impressions."
+        "title": "REVENUE SCALE UP",
+        "description": "Greater exposure comes more potential revenue sources on a global scale."
       },
       {
-        "title": "Audience",
-        "description": "Tap into engaged audiences of 50M+ monthly listeners across top streaming platforms worldwide."
+        "title": "HASSLE-FREE",
+        "description": "We handle everything from negotiation to closing the deal, with your consulting in terms of pricing."
       }
     ]
   },

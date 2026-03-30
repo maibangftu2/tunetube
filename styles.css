@@ -845,7 +845,7 @@ img {
 .labels-page-hero {
     position: relative;
     width: 100%;
-    min-height: 60vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -861,10 +861,13 @@ img {
     bottom: 0;
 }
 
-.labels-page-hero .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.labels-page-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
 }
 
 .labels-hero-content {
@@ -873,15 +876,19 @@ img {
     text-align: center;
     color: var(--white);
     padding: 80px 40px;
-    max-width: 800px;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .labels-hero-title {
     font-size: 48px;
     font-weight: 900;
     line-height: 1.15;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     text-shadow: 2px 4px 12px rgba(0,0,0,0.4);
+    letter-spacing: 3px;
 }
 
 .btn-join {
@@ -896,6 +903,7 @@ img {
     border-radius: 40px;
     transition: all 0.4s var(--transition-smooth);
     box-shadow: 0 4px 20px var(--purple-glow);
+    margin-top: 50px;
 }
 
 .btn-join:hover {
@@ -911,13 +919,60 @@ img {
 }
 
 .benefits-grid {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 }
 
+/* On labels page, benefit cards are transparent with white text */
+.labels-page .benefit-card {
+    text-align: center;
+    padding: 40px 24px;
+    border-radius: 0;
+    background: transparent;
+    color: white;
+    transition: transform 0.4s ease;
+}
+
+.labels-page .benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: none;
+}
+
+.labels-page .benefit-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: transparent;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.labels-page .benefit-icon svg {
+    width: 80px;
+    height: 80px;
+    fill: white;
+}
+
+.labels-page .benefit-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.labels-page .benefit-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+}
+
+/* Default benefit card styles (for non-labels pages) */
 .benefit-card {
     text-align: center;
     padding: 40px 24px;
