@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Request | TuneTube</title>
+    <meta name="description" content="Get in touch with TuneTube. Submit your music or brand partnership request.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="submit-page">
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" id="logo">
+                <div class="logo-text">
+                    <span class="logo-tune">TUNE</span>
+                    <span class="logo-tube">TUBE</span>
+                </div>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html" class="nav-link" id="nav-creators">For Creators</a>
+                <a href="for-labels.html" class="nav-link" id="nav-labels">For Labels</a>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">For Creators</a>
+        <a href="for-labels.html" class="mobile-nav-link">For Labels</a>
+    </div>
+
+    <!-- Submit Request Section -->
+    <section class="submit-section" id="submit-section">
+        <div class="submit-bg">
+            <img src="images/submit-bg.png" alt="Concert stage with red lighting" class="submit-bg-img">
+            <div class="submit-bg-overlay"></div>
+        </div>
+        <div class="form-container" id="form-container">
+            <h1 class="form-title" id="form-title">Submit a Request</h1>
+            <p class="form-subtitle" id="form-subtitle">Tell us about your project and we'll find the perfect solution.</p>
+            
+            <form class="contact-form" id="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">First Name *</label>
+                        <input type="text" id="first-name" name="firstName" required placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name *</label>
+                        <input type="text" id="last-name" name="lastName" required placeholder="Doe">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company / Label</label>
+                    <input type="text" id="company" name="company" placeholder="Your company or label name">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required rows="5" placeholder="Tell us about your project, goals, and what you're looking for..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit" id="btn-submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-dark" id="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="footer-tune">TUNE</span>
+                <span class="footer-tube">TUBE</span>
+            </div>
+            <p class="footer-copyright" id="footer-copyright">© 2026 by TuneTube Inc.</p>
+        </div>
+    </footer>
+
+    <script src="cms.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

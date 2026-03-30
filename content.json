@@ -1,0 +1,70 @@
+{
+  "site": {
+    "title": "TuneTube | Proven Sounds. Boundless Reach.",
+    "description": "TuneTube provides proven, market-tested melodies, fully localized for your region."
+  },
+  "hero": {
+    "logoLine1": "T U N E",
+    "logoLine2": "T U B E",
+    "tagline": "Proven Sounds. Boundless Reach.",
+    "ctaText": "CONTACT",
+    "ctaLink": "submit-request.html",
+    "backgroundImage": "images/hero-bg.png"
+  },
+  "forLabels": {
+    "title": "FOR LABELS",
+    "description": "We provide a pipeline of proven, market-tested melodies, fully localized for your region to drive fresh revenue and catalog growth.",
+    "ctaText": "Get in touch",
+    "ctaLink": "submit-request.html",
+    "image": "images/artist-collage.png",
+    "spotifyEmbed": "https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0"
+  },
+  "forBrands": {
+    "title": "For brands",
+    "description": "We elevate your localized marketing by pairing your campaigns with market-tested, viral anthems, turning your brand into an authentic cultural moment.",
+    "ctaText": "Get in touch",
+    "ctaLink": "submit-request.html",
+    "image": "images/brands-collage.png"
+  },
+  "wishlist": {
+    "title": "Drop us your wishlist and we will take care of the rest.",
+    "ctaText": "SUBMIT NOW",
+    "ctaLink": "submit-request.html"
+  },
+  "brandWall": [
+    { "name": "Coca-Cola", "image": "images/brand-cocacola.png" },
+    { "name": "Grab", "image": "images/brand-grab.png" },
+    { "name": "Nike", "image": "images/brand-nike.png" },
+    { "name": "Heineken", "image": "images/brand-heineken.png" },
+    { "name": "Samsung", "image": "images/brand-samsung.png" }
+  ],
+  "labelsPage": {
+    "heroTitle": "LET OUR TUNES TAKE YOUR BRAND TO THE NEXT LEVEL",
+    "backgroundImage": "images/labels-bg.png",
+    "ctaText": "JOIN NOW",
+    "ctaLink": "submit-request.html",
+    "benefits": [
+      {
+        "title": "Promotion",
+        "description": "Put the song in front of your target demographics through the world's largest advertising platforms."
+      },
+      {
+        "title": "Data",
+        "description": "Receive regular reporting from top-notch Marketing Analysts powered by insights from 200M+ paid ad impressions."
+      },
+      {
+        "title": "Audience",
+        "description": "Tap into engaged audiences of 50M+ monthly listeners across top streaming platforms worldwide."
+      }
+    ]
+  },
+  "submitPage": {
+    "title": "Submit a Request",
+    "subtitle": "Tell us about your project and we'll find the perfect solution.",
+    "backgroundImage": "images/submit-bg.png",
+    "submitBtnText": "Submit"
+  },
+  "footer": {
+    "copyright": "© 2026 by TuneTube Inc."
+  }
+}
