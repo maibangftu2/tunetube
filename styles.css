@@ -573,27 +573,25 @@ img {
     color: var(--white);
 }
 
-/* Brands Grid - 8-image scattered collage layout matching Wix */
+/* Brands Grid - scattered collage layout matching Wix reference */
 .brands-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 14px;
     position: relative;
-    min-height: 500px;
+    width: 100%;
+    min-height: 580px;
 }
 
 .brand-photo {
-    border-radius: 12px;
+    position: absolute;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 8px 8px 30px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s;
 }
 
 .brand-photo:hover {
-    transform: scale(1.04) rotate(-1deg) !important;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.35);
-    z-index: 10;
+    transform: scale(1.06) !important;
+    box-shadow: 12px 12px 40px rgba(0,0,0,0.45);
+    z-index: 20 !important;
 }
 
 .brand-photo img {
@@ -603,58 +601,88 @@ img {
     object-position: center center;
 }
 
-/* Row 1: PNJ + Grab */
+/* 1: Coca-Cola - far left, tall, tilted counter-clockwise */
 .brand-photo-1 {
-    grid-column: 1 / 3;
-    height: 220px;
-    transform: rotate(-2deg);
+    width: 220px;
+    height: 320px;
+    left: -30px;
+    top: 100px;
+    transform: rotate(-8deg);
+    z-index: 3;
 }
 
+/* 2: Napas poster - left-center, tall, slight tilt */
 .brand-photo-2 {
-    grid-column: 3 / 5;
-    height: 200px;
+    width: 200px;
+    height: 340px;
+    left: 190px;
+    top: 60px;
     transform: rotate(3deg);
-    margin-top: 20px;
+    z-index: 4;
 }
 
-/* Row 2: Coca-Cola + Napas + Woman in car + Samsung */
+/* 3: PNJ ring box - top-center, small square, straight */
 .brand-photo-3 {
-    height: 260px;
-    transform: rotate(-3deg);
-    margin-top: -10px;
+    width: 180px;
+    height: 170px;
+    left: 340px;
+    top: -20px;
+    transform: rotate(2deg);
+    z-index: 5;
 }
 
+/* 4: Woman in car - center, tilted clockwise */
 .brand-photo-4 {
-    height: 280px;
-    transform: rotate(1deg);
-    margin-top: -20px;
-}
-
-.brand-photo-5 {
-    height: 260px;
-    transform: rotate(-1deg);
-    margin-top: 10px;
-}
-
-.brand-photo-8 {
-    height: 240px;
-    transform: rotate(2deg);
-    margin-top: -15px;
-}
-
-/* Row 3: Heineken + Nike */
-.brand-photo-6 {
-    grid-column: 2 / 3;
+    width: 240px;
     height: 200px;
-    transform: rotate(2deg);
-    margin-top: -20px;
+    left: 330px;
+    top: 140px;
+    transform: rotate(6deg);
+    z-index: 6;
 }
 
+/* 5: Grab rider - top-right, polaroid-style, tilted counter-clockwise */
+.brand-photo-5 {
+    width: 170px;
+    height: 200px;
+    right: 60px;
+    top: -30px;
+    transform: rotate(-6deg);
+    z-index: 2;
+    border: 6px solid white;
+    border-radius: 4px;
+}
+
+/* 6: Heineken - middle-right, polaroid, tilted */
+.brand-photo-6 {
+    width: 180px;
+    height: 180px;
+    right: -10px;
+    top: 170px;
+    transform: rotate(5deg);
+    z-index: 7;
+    border: 6px solid white;
+    border-radius: 4px;
+}
+
+/* 7: Nike shoe - bottom-center, tilted */
 .brand-photo-7 {
-    grid-column: 3 / 4;
-    height: 220px;
-    transform: rotate(-2deg);
-    margin-top: -30px;
+    width: 200px;
+    height: 240px;
+    left: 280px;
+    top: 340px;
+    transform: rotate(-6deg);
+    z-index: 8;
+}
+
+/* 8: Samsung x Anh Tú - far right, tall, slight tilt */
+.brand-photo-8 {
+    width: 220px;
+    height: 320px;
+    right: -40px;
+    top: 60px;
+    transform: rotate(-4deg);
+    z-index: 1;
 }
 
 /* === WISHLIST / BRAND WALL SECTION === */
@@ -1285,27 +1313,24 @@ img {
     }
 
     .brands-grid {
+        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 8px;
         min-height: auto;
     }
 
-    /* Remove rotation on tablet to prevent clipping */
-    .brand-photo-1,
-    .brand-photo-2,
-    .brand-photo-3,
-    .brand-photo-4,
-    .brand-photo-5,
-    .brand-photo-6,
-    .brand-photo-7,
-    .brand-photo-8 {
-        transform: none;
-        margin-top: 0;
-        grid-column: auto;
-    }
-
+    /* Reset absolute positioning to grid on tablet */
     .brand-photo {
+        position: static !important;
+        width: auto !important;
         height: 160px !important;
+        transform: none !important;
+        margin-top: 0 !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        border: none !important;
+        border-radius: 10px !important;
     }
 }
 
@@ -1418,16 +1443,23 @@ img {
     }
 
     .brands-grid {
+        display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 6px;
         min-height: auto;
     }
 
     .brand-photo {
+        position: static !important;
+        width: auto !important;
         height: 120px !important;
         transform: none !important;
         margin-top: 0 !important;
-        grid-column: auto !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        border: none !important;
+        border-radius: 8px !important;
     }
 
     .artist-card img,
@@ -1489,6 +1521,7 @@ img {
     /* Brand photos - compact on small phones */
     .brand-photo {
         height: 100px !important;
+        position: static !important;
     }
 
     .footer-tune, .footer-tube {
