@@ -1383,52 +1383,67 @@ img {
         padding: 60px 0;
     }
 
+    /* === MOBILE: Horizontal swipe carousel === */
+    /* Compact carousel - swipe to browse, minimal vertical space */
     .section-container {
         padding: 0 20px;
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
-    /* === MOBILE: Full-image stacked layout === */
-    /* Single column so each image gets full width with NO cropping */
     .artist-grid,
     .brands-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
         gap: 12px;
+        padding-bottom: 12px;
+        scrollbar-width: none;
     }
 
-    .artist-card img,
-    .brand-photo img {
-        width: 100%;
-        height: auto;
-        object-fit: initial;
-        object-position: initial;
+    .artist-grid::-webkit-scrollbar,
+    .brands-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .artist-card,
+    .brand-photo {
+        flex: 0 0 75%;
+        scroll-snap-align: center;
     }
 
     .artist-card-large,
     .artist-card-small,
     .artist-card-medium,
-    .artist-card-dark {
-        height: auto;
-    }
-
+    .artist-card-dark,
     .artist-card-promo {
-        grid-column: span 1;
         height: auto;
+        aspect-ratio: 1;
+        grid-column: unset;
     }
 
     .brand-photo-1,
     .brand-photo-2,
     .brand-photo-3,
-    .brand-photo-4 {
+    .brand-photo-4,
+    .brand-photo-5 {
         height: auto;
+        aspect-ratio: 1;
+        grid-column: unset;
+        transform: none;
     }
 
-    .brand-photo-5 {
-        grid-column: span 1;
-        height: auto;
+    .artist-card img,
+    .brand-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
     }
 
     .brand-photo:hover {
-        transform: scale(1.02);
+        transform: none;
     }
 }
 
@@ -1460,27 +1475,30 @@ img {
         font-size: 28px;
     }
 
-    /* Artist grid - single column on small phones */
+    /* Artist grid - carousel stays on small phones */
+    .artist-card,
+    .brand-photo {
+        flex: 0 0 80%;
+    }
+
     .artist-card-large,
     .artist-card-small,
     .artist-card-medium,
-    .artist-card-dark {
-        height: auto;
-    }
-
+    .artist-card-dark,
     .artist-card-promo {
-        grid-column: span 1;
         height: auto;
+        aspect-ratio: 1;
     }
 
-    /* Brand photos - single column */
+    /* Brand photos - carousel */
     .brand-photo-1,
     .brand-photo-2,
     .brand-photo-3,
     .brand-photo-4,
     .brand-photo-5 {
         height: auto;
-        grid-column: span 1;
+        aspect-ratio: 1;
+        grid-column: unset;
     }
 
     /* Brand wall - 2-col on small phone, taller items */
