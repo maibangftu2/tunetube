@@ -20,9 +20,9 @@
     "images": [
       "images/labels-artist1.jpeg",
       "images/labels-artist2.jpg",
-      "images/labels-artist4.jpeg",
-      "images/labels-artist3.jpg",
-      "images/labels-artist5.png"
+      "images/labels-artist-singer-real.png",
+      "images/labels-artist-yo2000-real.jpeg",
+      "images/labels-artist-triky-outnow.jpg"
     ],
     "spotifyEmbed": "https://open.spotify.com/embed/playlist/3WHQmKJyPKYDW5Ln3JK7Y0?utm_source=generator&theme=0"
   },
