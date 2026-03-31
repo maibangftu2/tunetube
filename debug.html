@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><title>Debug</title></head>
+<body>
+<h1>Brand Wall Debug</h1>
+<pre id="output"></pre>
+<script>
+window.addEventListener('load', function() {
+    const wall = document.createElement('div');
+    wall.innerHTML = document.querySelector('#brand-wall') ? 'found' : 'not found';
+    
+    // Load the main page in an iframe and inspect
+    fetch('/index.html').then(r => r.text()).then(html => {
+        // Check if brand-wall section exists
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const bw = doc.getElementById('brand-wall');
+        const items = bw ? bw.querySelectorAll('.brand-wall-item') : [];
+        
+        let out = 'Brand wall found: ' + (bw ? 'YES' : 'NO') + '\n';
+        out += 'Items count: ' + items.length + '\n\n';
+        
+        items.forEach((item, i) => {
+            const img = item.querySelector('img');
+            out += `Item ${i}: class="${item.className}" img="${img ? img.getAttribute('src') : 'none'}"\n`;
+        });
+        
+        // Check CSS
+        out += '\n--- Checking stylesheet ---\n';
+        fetch('/styles.css').then(r => r.text()).then(css => {
+            // Check for any rule that might hide brand-wall-item
+            const hideRules = css.match(/brand-wall[^{]*\{[^}]*opacity\s*:\s*0[^}]*/g);
+            out += 'Rules with opacity:0 for brand-wall: ' + (hideRules ? hideRules.join('\n') : 'NONE') + '\n';
+            
+            const displayNone = css.match(/brand-wall[^{]*\{[^}]*display\s*:\s*none[^}]*/g);
+            out += 'Rules with display:none for brand-wall: ' + (displayNone ? displayNone.join('\n') : 'NONE') + '\n';
+            
+            const visHidden = css.match(/brand-wall[^{]*\{[^}]*visibility\s*:\s*hidden[^}]*/g);
+            out += 'Rules with visibility:hidden for brand-wall: ' + (visHidden ? visHidden.join('\n') : 'NONE') + '\n';
+            
+            // Check data-animate rule
+            const dataAnimate = css.match(/\[data-animate\][^{]*\{[^}]*/g);
+            out += '\ndata-animate rules: ' + (dataAnimate ? dataAnimate.join('\n') : 'NONE') + '\n';
+            
+            document.getElementById('output').textContent = out;
+        });
+    });
+});
+</script>
+</body>
+</html>

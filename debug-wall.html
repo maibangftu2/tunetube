@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head>
+<title>Debug Brand Wall</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* Override to make visible for debugging */
+.brand-wall-item { border: 3px solid red !important; background: yellow !important; }
+body { margin: 0; }
+</style>
+</head>
+<body>
+<section class="wishlist-section" id="wishlist-section" style="min-height: 600px;">
+    <div class="brand-wall" id="brand-wall">
+        <div class="brand-wall-item brand-wall-1">
+            <img src="images/brand-cocacola.png" alt="Coca-Cola">
+        </div>
+        <div class="brand-wall-item brand-wall-2">
+            <img src="images/labels-artist6.jpeg" alt="Artist with phone">
+        </div>
+        <div class="brand-wall-item brand-wall-3">
+            <img src="images/brand-heineken.png" alt="Heineken">
+        </div>
+        <div class="brand-wall-item brand-wall-4">
+            <img src="images/brand-nike.png" alt="Nike Jordan">
+        </div>
+        <div class="brand-wall-item brand-wall-5">
+            <img src="images/labels-artist5.png" alt="Riêng tư tuyệt đối">
+        </div>
+    </div>
+</section>
+<div id="debug-info" style="background: #000; color: #0f0; padding: 20px; font-family: monospace;"></div>
+<script>
+window.addEventListener('load', () => {
+    const info = [];
+    const wall = document.getElementById('brand-wall');
+    const section = document.getElementById('wishlist-section');
+    
+    info.push('=== SECTION ===');
+    const sCs = getComputedStyle(section);
+    info.push('display: ' + sCs.display);
+    info.push('width: ' + sCs.width);
+    info.push('height: ' + sCs.height);
+    info.push('overflow: ' + sCs.overflow);
+    info.push('position: ' + sCs.position);
+    info.push('opacity: ' + sCs.opacity);
+    info.push('visibility: ' + sCs.visibility);
+    info.push('rect: ' + JSON.stringify(section.getBoundingClientRect()));
+    
+    info.push('\n=== BRAND WALL ===');
+    const wCs = getComputedStyle(wall);
+    info.push('display: ' + wCs.display);
+    info.push('width: ' + wCs.width);
+    info.push('height: ' + wCs.height);
+    info.push('overflow: ' + wCs.overflow);
+    info.push('minHeight: ' + wCs.minHeight);
+    info.push('padding: ' + wCs.padding);
+    info.push('rect: ' + JSON.stringify(wall.getBoundingClientRect()));
+    
+    info.push('\n=== ITEMS ===');
+    wall.querySelectorAll('.brand-wall-item').forEach((item, i) => {
+        const cs = getComputedStyle(item);
+        const rect = item.getBoundingClientRect();
+        info.push(`\nItem ${i} (${item.className}):`);
+        info.push(`  display: ${cs.display}, width: ${cs.width}, height: ${cs.height}`);
+        info.push(`  opacity: ${cs.opacity}, visibility: ${cs.visibility}`);
+        info.push(`  overflow: ${cs.overflow}, position: ${cs.position}`);
+        info.push(`  transform: ${cs.transform}`);
+        info.push(`  rect: x=${rect.x.toFixed(0)} y=${rect.y.toFixed(0)} w=${rect.width.toFixed(0)} h=${rect.height.toFixed(0)}`);
+        const img = item.querySelector('img');
+        if (img) {
+            info.push(`  img: ${img.src.split('/').pop()} complete=${img.complete} natural=${img.naturalWidth}x${img.naturalHeight}`);
+        }
+    });
+    
+    document.getElementById('debug-info').innerHTML = info.join('<br>');
+});
+</script>
+</body></html>

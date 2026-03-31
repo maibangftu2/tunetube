@@ -1019,10 +1019,26 @@ img {
 .submit-page {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.submit-section {
+    flex: 1;
+    display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     padding: 100px 40px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .form-group {
+    flex: 1;
 }
 
 .submit-bg {
