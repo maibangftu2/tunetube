@@ -6,12 +6,22 @@
 
 const CMS = {
     STORAGE_KEY: 'tunetube_cms_content',
+    VERSION_KEY: 'tunetube_cms_version',
+    CONTENT_VERSION: '2026.03.31.v2', // Bump this when content.json changes
     content: null,
 
-    // Load content: localStorage first, then content.json fallback
+    // Load content: always fetch fresh content.json, only use localStorage
+    // if it was saved by admin AND matches current version
     async init() {
+        const savedVersion = localStorage.getItem(this.VERSION_KEY);
         const saved = localStorage.getItem(this.STORAGE_KEY);
-        if (saved) {
+
+        // Invalidate stale localStorage if version doesn't match
+        if (savedVersion !== this.CONTENT_VERSION) {
+            localStorage.removeItem(this.STORAGE_KEY);
+            localStorage.removeItem(this.VERSION_KEY);
+            await this.loadDefaults();
+        } else if (saved) {
             try {
                 this.content = JSON.parse(saved);
             } catch (e) {
@@ -36,6 +46,7 @@ const CMS = {
     save(data) {
         this.content = data;
         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(data));
+        localStorage.setItem(this.VERSION_KEY, this.CONTENT_VERSION);
     },
 
     reset() {
