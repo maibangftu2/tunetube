@@ -476,7 +476,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center center;
 }
 
 .artist-card-large {
@@ -580,7 +580,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center center;
 }
 
 .brand-photo-1 {
@@ -1387,34 +1387,37 @@ img {
         padding: 0 20px;
     }
 
-    /* Artist grid - compact 2-col with better face visibility */
-    .artist-card-large,
-    .artist-card-small {
-        height: 200px;
+    /* Artist grid - use aspect-ratio to preserve full image content */
+    .artist-card img,
+    .brand-photo img {
+        object-position: center top;
     }
 
+    .artist-card-large,
+    .artist-card-small,
     .artist-card-medium,
     .artist-card-dark {
-        height: 180px;
+        height: auto;
+        aspect-ratio: 1;
     }
 
     .artist-card-promo {
-        height: 160px;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
 
-    /* Brand photos - no rotation, taller for face visibility */
+    /* Brand photos - use aspect-ratio to preserve full image content */
     .brand-photo-1,
-    .brand-photo-2 {
-        height: 200px;
-    }
-
+    .brand-photo-2,
     .brand-photo-3,
     .brand-photo-4 {
-        height: 180px;
+        height: auto;
+        aspect-ratio: 1;
     }
 
     .brand-photo-5 {
-        height: 160px;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
 
     .brand-photo:hover {
@@ -1450,7 +1453,7 @@ img {
         font-size: 28px;
     }
 
-    /* Artist grid - single column on small phones, taller for portrait visibility */
+    /* Artist grid - single column on small phones */
     .artist-grid {
         grid-template-columns: 1fr;
     }
@@ -1459,15 +1462,17 @@ img {
     .artist-card-small,
     .artist-card-medium,
     .artist-card-dark {
-        height: 260px;
+        height: auto;
+        aspect-ratio: 4 / 3;
     }
 
     .artist-card-promo {
         grid-column: span 1;
-        height: 240px;
+        height: auto;
+        aspect-ratio: 16 / 9;
     }
 
-    /* Brand photos - single column, taller for full portrait */
+    /* Brand photos - single column */
     .brands-grid {
         grid-template-columns: 1fr;
     }
@@ -1477,7 +1482,8 @@ img {
     .brand-photo-3,
     .brand-photo-4,
     .brand-photo-5 {
-        height: 260px;
+        height: auto;
+        aspect-ratio: 4 / 3;
         grid-column: span 1;
     }
 
