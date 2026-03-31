@@ -1387,10 +1387,20 @@ img {
         padding: 0 20px;
     }
 
-    /* Artist grid - use aspect-ratio to preserve full image content */
+    /* === MOBILE: Full-image stacked layout === */
+    /* Single column so each image gets full width with NO cropping */
+    .artist-grid,
+    .brands-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
     .artist-card img,
     .brand-photo img {
-        object-position: center top;
+        width: 100%;
+        height: auto;
+        object-fit: initial;
+        object-position: initial;
     }
 
     .artist-card-large,
@@ -1398,26 +1408,23 @@ img {
     .artist-card-medium,
     .artist-card-dark {
         height: auto;
-        aspect-ratio: 1;
     }
 
     .artist-card-promo {
+        grid-column: span 1;
         height: auto;
-        aspect-ratio: 16 / 9;
     }
 
-    /* Brand photos - use aspect-ratio to preserve full image content */
     .brand-photo-1,
     .brand-photo-2,
     .brand-photo-3,
     .brand-photo-4 {
         height: auto;
-        aspect-ratio: 1;
     }
 
     .brand-photo-5 {
+        grid-column: span 1;
         height: auto;
-        aspect-ratio: 16 / 9;
     }
 
     .brand-photo:hover {
@@ -1454,36 +1461,25 @@ img {
     }
 
     /* Artist grid - single column on small phones */
-    .artist-grid {
-        grid-template-columns: 1fr;
-    }
-
     .artist-card-large,
     .artist-card-small,
     .artist-card-medium,
     .artist-card-dark {
         height: auto;
-        aspect-ratio: 4 / 3;
     }
 
     .artist-card-promo {
         grid-column: span 1;
         height: auto;
-        aspect-ratio: 16 / 9;
     }
 
     /* Brand photos - single column */
-    .brands-grid {
-        grid-template-columns: 1fr;
-    }
-
     .brand-photo-1,
     .brand-photo-2,
     .brand-photo-3,
     .brand-photo-4,
     .brand-photo-5 {
         height: auto;
-        aspect-ratio: 4 / 3;
         grid-column: span 1;
     }
 
