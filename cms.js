@@ -7,7 +7,7 @@
 const CMS = {
     STORAGE_KEY: 'tunetube_cms_content',
     VERSION_KEY: 'tunetube_cms_version',
-    CONTENT_VERSION: '2026.03.31.v2', // Bump this when content.json changes
+    CONTENT_VERSION: '2026.03.31.v3', // Bump this when content.json changes
     content: null,
 
     // Load content: always fetch fresh content.json, only use localStorage
@@ -88,6 +88,21 @@ const CMS = {
                 if (spotifyIframe && c.forLabels.spotifyEmbed) {
                     spotifyIframe.src = c.forLabels.spotifyEmbed;
                 }
+
+                // Dynamic rebuild of artist grid from content.json
+                if (c.forLabels.images && c.forLabels.images.length > 0) {
+                    const artistGrid = document.querySelector('.artist-grid');
+                    if (artistGrid) {
+                        const cardClasses = ['artist-card-large', 'artist-card-small', 'artist-card-medium', 'artist-card-dark', 'artist-card-promo'];
+                        artistGrid.innerHTML = '';
+                        c.forLabels.images.forEach((img, i) => {
+                            const div = document.createElement('div');
+                            div.className = `artist-card ${cardClasses[i] || 'artist-card-large'}`;
+                            div.innerHTML = `<img src="${this.escapeHtml(img)}" alt="Artist ${i + 1}">`;
+                            artistGrid.appendChild(div);
+                        });
+                    }
+                }
             }
 
             // For Brands section
@@ -97,6 +112,20 @@ const CMS = {
                 this.setText('#btn-brands-touch', c.forBrands.ctaText);
                 this.setLink('#btn-brands-touch', c.forBrands.ctaLink);
                 this.setImage('.brands-collage-img', c.forBrands.image);
+
+                // Dynamic rebuild of brands grid from content.json
+                if (c.forBrands.images && c.forBrands.images.length > 0) {
+                    const brandsGrid = document.querySelector('.brands-grid');
+                    if (brandsGrid) {
+                        brandsGrid.innerHTML = '';
+                        c.forBrands.images.forEach((img, i) => {
+                            const div = document.createElement('div');
+                            div.className = `brand-photo brand-photo-${i + 1}`;
+                            div.innerHTML = `<img src="${this.escapeHtml(img)}" alt="Brand ${i + 1}">`;
+                            brandsGrid.appendChild(div);
+                        });
+                    }
+                }
             }
 
             // Wishlist section
