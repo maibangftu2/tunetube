@@ -32,9 +32,13 @@
     "ctaText": "Get in touch",
     "ctaLink": "submit-request.html",
     "images": [
-      "images/brand-napas.png",
+      "images/brand-pnj.png",
+      "images/brand-grab.jpeg",
+      "images/brand-cocacola.png",
+      "images/brand-napas.jpeg",
       "images/brands-photo1.jpeg",
-      "images/brands-photo2.jpeg",
+      "images/brand-heineken.jpeg",
+      "images/brand-nike.jpeg",
       "images/brand-samsung.png"
     ]
   },
@@ -43,11 +47,6 @@
     "ctaText": "SUBMIT NOW",
     "ctaLink": "submit-request.html"
   },
-  "brandWall": [
-    { "name": "Coca-Cola", "image": "images/brand-cocacola.png" },
-    { "name": "Artist with phone", "image": "images/labels-artist6.jpeg" },
-    { "name": "Tri Kỷ Album", "image": "images/labels-artist5.png" }
-  ],
   "labelsPage": {
     "heroTitle": "BENEFITS FOR MUSIC LABELS IN VIETNAM",
     "backgroundImage": "images/labels-bg.png",

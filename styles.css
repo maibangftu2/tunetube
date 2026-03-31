@@ -529,6 +529,11 @@ img {
 
 .brands-container {
     align-items: start;
+    grid-template-columns: 1fr 1.5fr;
+}
+
+.brands-image-collage {
+    overflow: visible;
 }
 
 .brands-title {
@@ -568,13 +573,14 @@ img {
     color: var(--white);
 }
 
-/* Brands Grid - staggered collage layout matching Wix (4 images) */
+/* Brands Grid - 8-image scattered collage layout matching Wix */
 .brands-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
     gap: 14px;
     position: relative;
+    min-height: 500px;
 }
 
 .brand-photo {
@@ -585,8 +591,9 @@ img {
 }
 
 .brand-photo:hover {
-    transform: scale(1.04) rotate(-1deg);
+    transform: scale(1.04) rotate(-1deg) !important;
     box-shadow: 0 10px 35px rgba(0,0,0,0.35);
+    z-index: 10;
 }
 
 .brand-photo img {
@@ -596,27 +603,58 @@ img {
     object-position: center center;
 }
 
+/* Row 1: PNJ + Grab */
 .brand-photo-1 {
+    grid-column: 1 / 3;
     height: 220px;
     transform: rotate(-2deg);
 }
 
 .brand-photo-2 {
-    height: 220px;
-    transform: rotate(2deg);
+    grid-column: 3 / 5;
+    height: 200px;
+    transform: rotate(3deg);
     margin-top: 20px;
 }
 
+/* Row 2: Coca-Cola + Napas + Woman in car + Samsung */
 .brand-photo-3 {
     height: 260px;
-    transform: rotate(1deg);
+    transform: rotate(-3deg);
     margin-top: -10px;
 }
 
 .brand-photo-4 {
+    height: 280px;
+    transform: rotate(1deg);
+    margin-top: -20px;
+}
+
+.brand-photo-5 {
+    height: 260px;
+    transform: rotate(-1deg);
+    margin-top: 10px;
+}
+
+.brand-photo-8 {
+    height: 240px;
+    transform: rotate(2deg);
+    margin-top: -15px;
+}
+
+/* Row 3: Heineken + Nike */
+.brand-photo-6 {
+    grid-column: 2 / 3;
+    height: 200px;
+    transform: rotate(2deg);
+    margin-top: -20px;
+}
+
+.brand-photo-7 {
+    grid-column: 3 / 4;
     height: 220px;
     transform: rotate(-2deg);
-    margin-top: 10px;
+    margin-top: -30px;
 }
 
 /* === WISHLIST / BRAND WALL SECTION === */
@@ -1217,23 +1255,6 @@ img {
         max-width: 400px;
     }
 
-    /* Brand Wall - convert to wrapping grid on tablet */
-    .brand-wall {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-        padding: 40px 16px 0;
-        min-height: auto;
-    }
-
-    .brand-wall-item {
-        width: 100% !important;
-        height: 220px !important;
-        transform: none !important;
-        margin-right: 0 !important;
-        border-radius: 8px;
-    }
-
     .wishlist-content {
         flex-direction: column;
         text-align: center;
@@ -1264,7 +1285,9 @@ img {
     }
 
     .brands-grid {
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 8px;
+        min-height: auto;
     }
 
     /* Remove rotation on tablet to prevent clipping */
@@ -1272,22 +1295,17 @@ img {
     .brand-photo-2,
     .brand-photo-3,
     .brand-photo-4,
-    .brand-photo-5 {
+    .brand-photo-5,
+    .brand-photo-6,
+    .brand-photo-7,
+    .brand-photo-8 {
         transform: none;
+        margin-top: 0;
+        grid-column: auto;
     }
 
-    .brand-photo-1,
-    .brand-photo-2 {
-        height: 180px;
-    }
-
-    .brand-photo-3,
-    .brand-photo-4 {
-        height: 160px;
-    }
-
-    .brand-photo-5 {
-        height: 140px;
+    .brand-photo {
+        height: 160px !important;
     }
 }
 
@@ -1339,24 +1357,7 @@ img {
         padding: 0 20px;
     }
 
-    /* Brand Wall - 2+3 grid on phone */
-    .brand-wall {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-        padding: 30px 12px 0;
-    }
-
-    .brand-wall-item {
-        height: 240px !important;
-    }
-
-    /* Last item spans full width centered */
-    .brand-wall-item:last-child {
-        grid-column: 1 / -1;
-        max-width: 60%;
-        justify-self: center;
-        height: 220px !important;
-    }
+    /* No brand wall on mobile */
 
     .labels-hero-title {
         font-size: 32px;
@@ -1418,30 +1419,15 @@ img {
 
     .brands-grid {
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 6px;
+        min-height: auto;
     }
 
-    .brand-photo-1 {
-        height: 140px;
-        transform: rotate(-1deg);
-    }
-
-    .brand-photo-2 {
-        height: 140px;
-        transform: rotate(1deg);
-        margin-top: 10px;
-    }
-
-    .brand-photo-3 {
-        height: 160px;
-        transform: rotate(0.5deg);
-        margin-top: -5px;
-    }
-
-    .brand-photo-4 {
-        height: 140px;
-        transform: rotate(-1deg);
-        margin-top: 5px;
+    .brand-photo {
+        height: 120px !important;
+        transform: none !important;
+        margin-top: 0 !important;
+        grid-column: auto !important;
     }
 
     .artist-card img,
@@ -1453,7 +1439,7 @@ img {
     }
 
     .brand-photo:hover {
-        transform: none;
+        transform: none !important;
     }
 }
 
@@ -1501,28 +1487,8 @@ img {
     }
 
     /* Brand photos - compact on small phones */
-    .brand-photo-1,
-    .brand-photo-2 {
-        height: 110px;
-    }
-
-    .brand-photo-3 {
-        height: 130px;
-    }
-
-    .brand-photo-4 {
-        height: 110px;
-    }
-
-    /* Brand wall - 3 items on small phone */
-    .brand-wall {
-        gap: 4px;
-        padding: 20px 8px 0;
-    }
-
-    .brand-wall-item {
-        height: 200px !important;
-        border-radius: 6px;
+    .brand-photo {
+        height: 100px !important;
     }
 
     .footer-tune, .footer-tube {

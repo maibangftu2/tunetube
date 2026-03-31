@@ -7,7 +7,7 @@
 const CMS = {
     STORAGE_KEY: 'tunetube_cms_content',
     VERSION_KEY: 'tunetube_cms_version',
-    CONTENT_VERSION: '2026.04.01.v6', // Bump: correct singer, Vu 20:00, Tri Ky OUT NOW images
+    CONTENT_VERSION: '2026.04.01.v8', // Bump: 8-image brands collage + remove brand wall
     content: null,
 
     // Load content: always fetch fresh content.json, only use localStorage
@@ -135,19 +135,7 @@ const CMS = {
                 this.setLink('#btn-submit-now', c.wishlist.ctaLink);
             }
 
-            // Brand Wall - dynamic rebuild
-            if (c.brandWall && c.brandWall.length > 0) {
-                const wall = document.getElementById('brand-wall');
-                if (wall) {
-                    wall.innerHTML = '';
-                    c.brandWall.forEach((brand, i) => {
-                        const div = document.createElement('div');
-                        div.className = `brand-wall-item brand-wall-${i + 1}`;
-                        div.innerHTML = `<img src="${this.escapeHtml(brand.image)}" alt="${this.escapeHtml(brand.name)}">`;
-                        wall.appendChild(div);
-                    });
-                }
-            }
+
         }
 
         // === FOR LABELS PAGE ===
