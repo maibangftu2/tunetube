@@ -48,7 +48,12 @@
             <h1 class="form-title" id="form-title">Submit a Request</h1>
             <p class="form-subtitle" id="form-subtitle">Tell us about your project and we'll find the perfect solution.</p>
             
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mvzvrgzl" method="POST">
+                <!-- Formspree hidden config -->
+                <input type="hidden" name="_subject" value="New TuneTube Inquiry">
+                <input type="hidden" name="_next" value="https://tunetube.org/submit-request.html?sent=true">
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="first-name">First Name *</label>
@@ -73,6 +78,17 @@
                 </div>
                 <button type="submit" class="btn-submit" id="btn-submit">Submit</button>
             </form>
+
+            <!-- Success message (shown after redirect) -->
+            <div class="form-success" id="form-success" style="display:none;">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#7B42BC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <h2>Thank you!</h2>
+                <p>Your request has been submitted successfully. We'll get back to you soon.</p>
+                <a href="index.html" class="btn-submit" style="display:inline-block;text-decoration:none;margin-top:20px;">Back to Home</a>
+            </div>
         </div>
     </section>
 
@@ -89,5 +105,17 @@
 
     <script src="cms.js"></script>
     <script src="script.js"></script>
-</body>
+    <script>
+        // Show success message if redirected from Formspree
+        if (window.location.search.includes('sent=true')) {
+            const form = document.getElementById('contact-form');
+            const success = document.getElementById('form-success');
+            const title = document.getElementById('form-title');
+            const subtitle = document.getElementById('form-subtitle');
+            if (form) form.style.display = 'none';
+            if (success) success.style.display = 'block';
+            if (title) title.style.display = 'none';
+            if (subtitle) subtitle.style.display = 'none';
+        }
+    </script>
 </html>
