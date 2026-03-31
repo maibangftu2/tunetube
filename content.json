@@ -32,10 +32,10 @@
     "ctaText": "Get in touch",
     "ctaLink": "submit-request.html",
     "images": [
+      "images/brand-napas.png",
       "images/brands-photo1.jpeg",
       "images/brands-photo2.jpeg",
-      "images/brand-samsung.png",
-      "images/brand-napas.png"
+      "images/brand-samsung.png"
     ]
   },
   "wishlist": {

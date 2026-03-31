@@ -7,7 +7,7 @@
 const CMS = {
     STORAGE_KEY: 'tunetube_cms_content',
     VERSION_KEY: 'tunetube_cms_version',
-    CONTENT_VERSION: '2026.03.31.v3', // Bump this when content.json changes
+    CONTENT_VERSION: '2026.03.31.v4', // Bump this when content.json changes - fixed brand images
     content: null,
 
     // Load content: always fetch fresh content.json, only use localStorage
