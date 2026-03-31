@@ -1206,14 +1206,21 @@ img {
         max-width: 400px;
     }
 
+    /* Brand Wall - convert to wrapping grid on tablet */
     .brand-wall {
-        min-height: 300px;
-        padding: 30px 0 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 40px 16px 0;
+        min-height: auto;
     }
 
     .brand-wall-item {
-        width: 160px !important;
-        height: 220px !important;
+        width: 100% !important;
+        height: 200px !important;
+        transform: none !important;
+        margin-right: 0 !important;
+        border-radius: 8px;
     }
 
     .wishlist-content {
@@ -1249,18 +1256,27 @@ img {
         gap: 8px;
     }
 
+    /* Remove rotation on tablet to prevent clipping */
+    .brand-photo-1,
+    .brand-photo-2,
+    .brand-photo-3,
+    .brand-photo-4,
+    .brand-photo-5 {
+        transform: none;
+    }
+
     .brand-photo-1,
     .brand-photo-2 {
-        height: 160px;
+        height: 180px;
     }
 
     .brand-photo-3,
     .brand-photo-4 {
-        height: 150px;
+        height: 160px;
     }
 
     .brand-photo-5 {
-        height: 130px;
+        height: 140px;
     }
 }
 
@@ -1312,13 +1328,23 @@ img {
         padding: 0 20px;
     }
 
+    /* Brand Wall - 2+3 grid on phone */
     .brand-wall {
-        min-height: 200px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 30px 12px 0;
     }
 
     .brand-wall-item {
-        width: 120px !important;
-        height: 170px !important;
+        height: 160px !important;
+    }
+
+    /* Last item spans full width centered */
+    .brand-wall-item:last-child {
+        grid-column: 1 / -1;
+        max-width: 60%;
+        justify-self: center;
+        height: 140px !important;
     }
 
     .labels-hero-title {
@@ -1340,6 +1366,40 @@ img {
 
     .section-container {
         padding: 0 20px;
+    }
+
+    /* Artist grid - compact 2-col */
+    .artist-card-large,
+    .artist-card-small {
+        height: 150px;
+    }
+
+    .artist-card-medium,
+    .artist-card-dark {
+        height: 130px;
+    }
+
+    .artist-card-promo {
+        height: 120px;
+    }
+
+    /* Brand photos - no rotation, fit container */
+    .brand-photo-1,
+    .brand-photo-2 {
+        height: 150px;
+    }
+
+    .brand-photo-3,
+    .brand-photo-4 {
+        height: 130px;
+    }
+
+    .brand-photo-5 {
+        height: 120px;
+    }
+
+    .brand-photo:hover {
+        transform: scale(1.02);
     }
 }
 
@@ -1371,29 +1431,51 @@ img {
         font-size: 28px;
     }
 
+    /* Artist grid - single column on small phones */
     .artist-grid {
         grid-template-columns: 1fr;
     }
 
-    .artist-card-promo {
-        grid-column: span 1;
+    .artist-card-large,
+    .artist-card-small,
+    .artist-card-medium,
+    .artist-card-dark {
+        height: 200px;
     }
 
+    .artist-card-promo {
+        grid-column: span 1;
+        height: 200px;
+    }
+
+    /* Brand photos - single column */
     .brands-grid {
         grid-template-columns: 1fr;
     }
 
+    .brand-photo-1,
+    .brand-photo-2,
+    .brand-photo-3,
+    .brand-photo-4,
     .brand-photo-5 {
+        height: 200px;
         grid-column: span 1;
     }
 
-    .brand-wall-item {
-        width: 90px !important;
-        height: 130px !important;
+    /* Brand wall - 2-col tight on small phone */
+    .brand-wall {
+        gap: 4px;
+        padding: 20px 8px 0;
     }
 
-    .brand-wall {
-        min-height: 160px;
+    .brand-wall-item {
+        height: 130px !important;
+        border-radius: 6px;
+    }
+
+    .brand-wall-item:last-child {
+        height: 120px !important;
+        max-width: 65%;
     }
 
     .footer-tune, .footer-tube {
@@ -1402,5 +1484,13 @@ img {
 
     .wishlist-title {
         font-size: 18px;
+    }
+
+    .wishlist-banner {
+        padding: 30px 16px 60px;
+    }
+
+    .wishlist-content {
+        padding: 24px 20px;
     }
 }
