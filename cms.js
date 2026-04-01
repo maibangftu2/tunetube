@@ -120,14 +120,14 @@ const CMS = {
                         brandsGrid.innerHTML = '';
                         // Define collage transforms for mobile
                         const mobileTransforms = [
-                            'rotate(-5deg)',
-                            'rotate(6deg)',
-                            'rotate(4deg)',
-                            'rotate(-7deg)',
                             'rotate(-4deg)',
-                            'rotate(5deg)',
-                            'rotate(-6deg)',
-                            'rotate(8deg)'
+                            'rotate(3deg)',
+                            'rotate(2deg)',
+                            'rotate(-5deg)',
+                            'rotate(-3deg)',
+                            'rotate(4deg)',
+                            'rotate(-4deg)',
+                            'rotate(5deg)'
                         ];
                         const isMobile = window.innerWidth <= 768;
                         c.forBrands.images.forEach((img, i) => {

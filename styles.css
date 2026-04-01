@@ -1414,57 +1414,64 @@ img {
         gap: 16px;
     }
 
-    /* Artist grid - overlapping collage style */
+    /* Artist grid - staggered collage, full images visible */
     .artist-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 0;
         position: relative;
-        min-height: 340px;
+        min-height: auto;
+        padding: 0 4px;
     }
 
     .artist-card {
         border-radius: 8px;
+        overflow: visible;
+        width: calc(50% - 8px);
+    }
+
+    .artist-card img {
+        width: 100%;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 8px;
     }
 
     .artist-card-large {
-        height: 120px;
-        transform: rotate(-2deg);
-        margin-right: -8px;
+        height: auto !important;
+        transform: rotate(-3deg);
+        margin: 4px;
         z-index: 2;
     }
 
     .artist-card-small {
-        height: 110px;
+        height: auto !important;
         transform: rotate(2deg);
-        margin-top: 10px;
-        margin-left: -8px;
+        margin: 4px;
         z-index: 1;
     }
 
     .artist-card-medium {
-        height: 130px;
-        transform: rotate(1deg);
-        margin-top: -15px;
-        margin-right: -5px;
+        height: auto !important;
+        transform: rotate(2deg);
+        margin: -8px 4px 4px;
         z-index: 3;
     }
 
     .artist-card-dark {
-        height: 110px;
-        transform: rotate(-1.5deg);
-        margin-top: -5px;
-        margin-left: -5px;
+        height: auto !important;
+        transform: rotate(-2deg);
+        margin: -8px 4px 4px;
         z-index: 2;
     }
 
     .artist-card-promo {
-        grid-column: span 2;
-        height: 100px;
-        max-width: 55%;
+        width: 45%;
+        height: auto !important;
         justify-self: center;
-        transform: rotate(0.5deg);
-        margin-top: -10px;
+        transform: rotate(1deg);
+        margin: -8px auto 4px;
         z-index: 4;
     }
 
@@ -1488,6 +1495,7 @@ img {
     .brand-photo {
         position: relative !important;
         width: calc(50% - 8px) !important;
+        height: auto !important;
         left: auto !important;
         right: auto !important;
         top: auto !important;
@@ -1499,67 +1507,51 @@ img {
 
     .brand-photo img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 8px;
     }
 
-    /* Create a compact collage with overlaps - visible rotations */
+    /* Staggered collage with full images visible - no cropping */
     .brand-photo-1 {
-        height: 110px !important;
-        transform: rotate(-5deg) !important;
+        transform: rotate(-4deg) !important;
         margin: 4px !important;
         z-index: 2;
     }
     .brand-photo-2 {
-        height: 105px !important;
-        transform: rotate(6deg) !important;
+        transform: rotate(3deg) !important;
         margin: 4px !important;
         z-index: 3;
     }
     .brand-photo-3 {
-        height: 100px !important;
-        transform: rotate(4deg) !important;
-        margin: -12px 4px 4px !important;
+        transform: rotate(2deg) !important;
+        margin: -10px 4px 4px !important;
         z-index: 4;
     }
     .brand-photo-4 {
-        height: 110px !important;
-        transform: rotate(-7deg) !important;
-        margin: -12px 4px 4px !important;
+        transform: rotate(-5deg) !important;
+        margin: -10px 4px 4px !important;
         z-index: 3;
     }
     .brand-photo-5 {
-        height: 95px !important;
-        transform: rotate(-4deg) !important;
-        margin: -10px 4px 4px !important;
+        transform: rotate(-3deg) !important;
+        margin: -8px 4px 4px !important;
         z-index: 2;
     }
     .brand-photo-6 {
-        height: 100px !important;
-        transform: rotate(5deg) !important;
-        margin: -10px 4px 4px !important;
+        transform: rotate(4deg) !important;
+        margin: -8px 4px 4px !important;
         z-index: 5;
     }
     .brand-photo-7 {
-        height: 100px !important;
-        transform: rotate(-6deg) !important;
-        margin: -14px 4px 4px !important;
+        transform: rotate(-4deg) !important;
+        margin: -10px 4px 4px !important;
         z-index: 6;
     }
     .brand-photo-8 {
-        height: 105px !important;
-        transform: rotate(8deg) !important;
-        margin: -14px 4px 4px !important;
+        transform: rotate(5deg) !important;
+        margin: -10px 4px 4px !important;
         z-index: 7;
-    }
-
-    .artist-card img,
-    .brand-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center top;
     }
 
     /* Disable transitions on mobile for instant transforms */
