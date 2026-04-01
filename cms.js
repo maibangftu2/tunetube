@@ -118,10 +118,26 @@ const CMS = {
                     const brandsGrid = document.querySelector('.brands-grid');
                     if (brandsGrid) {
                         brandsGrid.innerHTML = '';
+                        // Define collage transforms for mobile
+                        const mobileTransforms = [
+                            'rotate(-5deg)',
+                            'rotate(6deg)',
+                            'rotate(4deg)',
+                            'rotate(-7deg)',
+                            'rotate(-4deg)',
+                            'rotate(5deg)',
+                            'rotate(-6deg)',
+                            'rotate(8deg)'
+                        ];
+                        const isMobile = window.innerWidth <= 768;
                         c.forBrands.images.forEach((img, i) => {
                             const div = document.createElement('div');
                             div.className = `brand-photo brand-photo-${i + 1}`;
                             div.innerHTML = `<img src="${this.escapeHtml(img)}" alt="Brand ${i + 1}">`;
+                            // Apply inline transforms on mobile for collage effect
+                            if (isMobile && mobileTransforms[i]) {
+                                div.style.transform = mobileTransforms[i];
+                            }
                             brandsGrid.appendChild(div);
                         });
                     }
