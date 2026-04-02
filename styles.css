@@ -454,12 +454,12 @@ img {
     background: var(--purple-dark);
 }
 
-/* Artist Grid - staggered collage layout matching Wix */
+/* Artist Grid - spaced collage layout */
 .artist-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
-    gap: 12px;
+    gap: 20px;
     position: relative;
 }
 
@@ -482,38 +482,36 @@ img {
     object-position: center center;
 }
 
-/* Row 1: Cứ Chill Thôi (large, left) + Nếu Lỡ Một Ngày (small, right offset) */
+/* Row 1: Cứ Chill Thôi (left) + Nếu Lỡ Một Ngày (right) */
 .artist-card-large {
-    height: 260px;
+    height: 240px;
     transform: rotate(-2deg);
 }
 
 .artist-card-small {
-    height: 260px;
+    height: 240px;
     transform: rotate(2deg);
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 /* Row 2: Singer (medium) + Vũ 20:00 (dark) */
 .artist-card-medium {
-    height: 250px;
+    height: 240px;
     transform: rotate(1deg);
-    margin-top: -10px;
 }
 
 .artist-card-dark {
-    height: 210px;
+    height: 240px;
     transform: rotate(-2deg);
-    margin-top: 10px;
+    margin-top: 16px;
 }
 
-/* Row 3: Tri Ky OUT NOW - contained width */
+/* Row 3: Tri Ky OUT NOW - centered */
 .artist-card-promo {
     grid-column: 1 / -1;
-    height: 180px;
+    height: 200px;
     transform: rotate(1deg);
-    margin-top: -8px;
-    max-width: 70%;
+    max-width: 55%;
     justify-self: center;
 }
 
@@ -579,24 +577,26 @@ img {
     color: var(--white);
 }
 
-/* Brands Grid - scattered collage layout matching Wix reference */
+/* Brands Grid - spaced grid layout */
 .brands-grid {
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
     width: 100%;
-    height: 550px;
 }
 
 .brand-photo {
-    position: absolute;
-    border-radius: 10px;
+    position: relative;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 8px 8px 30px rgba(0,0,0,0.3);
-    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0s;
+    box-shadow: 6px 6px 24px rgba(0,0,0,0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    aspect-ratio: 3 / 4;
 }
 
 .brand-photo:hover {
-    transform: scale(1.06) !important;
-    box-shadow: 12px 12px 40px rgba(0,0,0,0.45);
+    transform: scale(1.06) rotate(-1deg) !important;
+    box-shadow: 10px 10px 36px rgba(0,0,0,0.45);
     z-index: 20 !important;
 }
 
@@ -607,88 +607,41 @@ img {
     object-position: center center;
 }
 
-/* 1: Coca-Cola - far left, tall, tilted counter-clockwise (like Wix: bleeds left) */
+/* Subtle rotation variations for collage feel */
 .brand-photo-1 {
-    width: 200px;
-    height: 300px;
-    left: -30px;
-    top: 120px;
-    transform: rotate(-6deg);
-    z-index: 3;
-}
-
-/* 2: Napas poster - left-center, tall, slight tilt */
-.brand-photo-2 {
-    width: 180px;
-    height: 290px;
-    left: 140px;
-    top: 50px;
-    transform: rotate(3deg);
-    z-index: 4;
-}
-
-/* 3: PNJ ring box - top-center, landscape */
-.brand-photo-3 {
-    width: 200px;
-    height: 180px;
-    left: 300px;
-    top: -10px;
-    transform: rotate(2deg);
-    z-index: 5;
-}
-
-/* 4: Woman in car - center, tilted clockwise */
-.brand-photo-4 {
-    width: 220px;
-    height: 190px;
-    left: 290px;
-    top: 170px;
-    transform: rotate(5deg);
-    z-index: 6;
-}
-
-/* 5: Grab rider - top-right, polaroid, tilted */
-.brand-photo-5 {
-    width: 160px;
-    height: 180px;
-    right: 130px;
-    top: -10px;
-    transform: rotate(-5deg);
-    z-index: 2;
-    border: 5px solid white;
-    border-radius: 4px;
-}
-
-/* 6: Heineken - bottom-center, polaroid, tilted */
-.brand-photo-6 {
-    width: 160px;
-    height: 170px;
-    left: 360px;
-    top: 370px;
-    transform: rotate(4deg);
-    z-index: 7;
-    border: 5px solid white;
-    border-radius: 4px;
-}
-
-/* 7: Nike shoe - bottom-left, tilted */
-.brand-photo-7 {
-    width: 180px;
-    height: 210px;
-    left: 170px;
-    top: 340px;
-    transform: rotate(-5deg);
-    z-index: 8;
-}
-
-/* 8: Samsung x Anh Tú - right side, tall (matching Wix: large post) */
-.brand-photo-8 {
-    width: 200px;
-    height: 300px;
-    right: 50px;
-    top: 30px;
     transform: rotate(-3deg);
-    z-index: 1;
+}
+
+.brand-photo-2 {
+    transform: rotate(2deg);
+    margin-top: 20px;
+}
+
+.brand-photo-3 {
+    transform: rotate(1deg);
+}
+
+.brand-photo-4 {
+    transform: rotate(-2deg);
+    margin-top: 14px;
+}
+
+.brand-photo-5 {
+    transform: rotate(2deg);
+}
+
+.brand-photo-6 {
+    transform: rotate(-2deg);
+    margin-top: 16px;
+}
+
+.brand-photo-7 {
+    transform: rotate(-3deg);
+}
+
+.brand-photo-8 {
+    transform: rotate(2deg);
+    margin-top: 10px;
 }
 
 /* === WISHLIST / BRAND WALL SECTION === */
@@ -1301,7 +1254,7 @@ img {
     }
 
     .artist-grid {
-        gap: 8px;
+        gap: 14px;
     }
 
     .artist-card-large,
@@ -1311,32 +1264,22 @@ img {
 
     .artist-card-medium,
     .artist-card-dark {
-        height: 160px;
+        height: 180px;
     }
 
     .artist-card-promo {
-        height: 140px;
+        height: 150px;
     }
 
+    /* Brands grid - 2 columns on tablet */
     .brands-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 8px;
-        min-height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
     }
 
-    /* Reset absolute positioning to grid on tablet */
     .brand-photo {
-        position: static;
-        width: auto;
-        height: 160px;
-        transform: none;
-        margin-top: 0;
-        left: auto;
-        right: auto;
-        top: auto;
-        border: none;
-        border-radius: 10px;
+        margin-top: 0 !important;
+        aspect-ratio: 3 / 4;
     }
 }
 
@@ -1407,72 +1350,67 @@ img {
         padding: 40px 0 30px;
     }
 
-    /* === MOBILE: Compact overlapping collage (matching Wix) === */
+    /* === MOBILE: Spaced grid layout === */
     .section-container {
         padding: 0 20px;
         grid-template-columns: 1fr;
         gap: 16px;
     }
 
-    /* Artist grid - staggered collage, full images visible */
+    /* Artist grid - 2 columns with spacing */
     .artist-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
         position: relative;
         min-height: auto;
-        padding: 0 4px;
+        padding: 0;
     }
 
     .artist-card {
-        border-radius: 8px;
-        overflow: visible;
-        width: calc(50% - 8px);
+        border-radius: 10px;
+        overflow: hidden;
     }
 
     .artist-card img {
         width: 100%;
-        height: auto !important;
-        object-fit: contain !important;
-        border-radius: 8px;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
     }
 
     .artist-card-large {
-        height: auto !important;
-        transform: rotate(-3deg);
-        margin: 4px;
-        z-index: 2;
+        height: 160px;
+        transform: rotate(-2deg);
+        margin: 0;
     }
 
     .artist-card-small {
-        height: auto !important;
+        height: 160px;
         transform: rotate(2deg);
-        margin: 4px;
-        z-index: 1;
+        margin: 10px 0 0;
     }
 
     .artist-card-medium {
-        height: auto !important;
-        transform: rotate(2deg);
-        margin: -8px 4px 4px;
-        z-index: 3;
+        height: 160px;
+        transform: rotate(1deg);
+        margin: 0;
     }
 
     .artist-card-dark {
-        height: auto !important;
+        height: 160px;
         transform: rotate(-2deg);
-        margin: -8px 4px 4px;
-        z-index: 2;
+        margin: 10px 0 0;
     }
 
     .artist-card-promo {
-        width: 45%;
-        height: auto !important;
+        grid-column: 1 / -1;
+        width: 55%;
+        height: 130px;
         justify-self: center;
         transform: rotate(1deg);
-        margin: -8px auto 4px;
-        z-index: 4;
+        margin: 0 auto;
+        max-width: none;
     }
 
     /* Spotify embed mobile compact */
@@ -1480,85 +1418,37 @@ img {
         margin-top: 16px;
     }
 
-    /* Brands grid - overlapping collage style */
+    /* Brands grid - 2 columns with clear spacing */
     .brands-grid {
-        display: flex !important;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0 !important;
-        min-height: auto;
-        position: relative;
-        height: auto !important;
-        padding: 0 8px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
 
     .brand-photo {
-        position: relative !important;
-        width: calc(50% - 8px) !important;
-        height: auto !important;
-        left: auto !important;
-        right: auto !important;
-        top: auto !important;
-        border: none !important;
-        border-radius: 8px !important;
-        overflow: visible;
+        margin-top: 0 !important;
+        aspect-ratio: 3 / 4;
+        border-radius: 10px !important;
         box-shadow: 4px 4px 15px rgba(0,0,0,0.25);
     }
 
     .brand-photo img {
         width: 100%;
-        height: auto !important;
-        object-fit: contain !important;
-        border-radius: 8px;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
     }
 
-    /* Staggered collage with full images visible - no cropping */
-    .brand-photo-1 {
-        transform: rotate(-4deg) !important;
-        margin: 4px !important;
-        z-index: 2;
-    }
-    .brand-photo-2 {
-        transform: rotate(3deg) !important;
-        margin: 4px !important;
-        z-index: 3;
-    }
-    .brand-photo-3 {
-        transform: rotate(2deg) !important;
-        margin: -10px 4px 4px !important;
-        z-index: 4;
-    }
-    .brand-photo-4 {
-        transform: rotate(-5deg) !important;
-        margin: -10px 4px 4px !important;
-        z-index: 3;
-    }
-    .brand-photo-5 {
-        transform: rotate(-3deg) !important;
-        margin: -8px 4px 4px !important;
-        z-index: 2;
-    }
-    .brand-photo-6 {
-        transform: rotate(4deg) !important;
-        margin: -8px 4px 4px !important;
-        z-index: 5;
-    }
-    .brand-photo-7 {
-        transform: rotate(-4deg) !important;
-        margin: -10px 4px 4px !important;
-        z-index: 6;
-    }
-    .brand-photo-8 {
-        transform: rotate(5deg) !important;
-        margin: -10px 4px 4px !important;
-        z-index: 7;
-    }
+    /* Subtle rotation on mobile */
+    .brand-photo-1 { transform: rotate(-2deg) !important; }
+    .brand-photo-2 { transform: rotate(2deg) !important; }
+    .brand-photo-3 { transform: rotate(1deg) !important; }
+    .brand-photo-4 { transform: rotate(-2deg) !important; }
+    .brand-photo-5 { transform: rotate(2deg) !important; }
+    .brand-photo-6 { transform: rotate(-1deg) !important; }
+    .brand-photo-7 { transform: rotate(-2deg) !important; }
+    .brand-photo-8 { transform: rotate(2deg) !important; }
 
-    /* Disable transitions on mobile for instant transforms */
-    .brand-photo {
-        transition: none !important;
-    }
-
+    /* Disable hover effects on mobile */
     .brand-photo:hover {
         transform: none !important;
     }
@@ -1592,44 +1482,30 @@ img {
         font-size: 28px;
     }
 
-    /* Artist grid - even more compact on small phones */
+    /* Artist grid - slightly smaller on small phones */
     .artist-grid {
-        min-height: 280px;
+        gap: 10px;
     }
 
-    .artist-card-large {
-        height: 100px;
-    }
-
-    .artist-card-small {
-        height: 95px;
-    }
-
-    .artist-card-medium {
-        height: 110px;
-    }
-
+    .artist-card-large,
+    .artist-card-small,
+    .artist-card-medium,
     .artist-card-dark {
-        height: 95px;
+        height: 130px;
     }
 
     .artist-card-promo {
-        height: 85px;
-        max-width: 50%;
+        height: 100px;
+        width: 50%;
     }
 
-    /* Brand photos - compact on small phones */
-    .brand-photo-1, .brand-photo-2 {
-        height: 85px !important;
+    /* Brand photos - maintain aspect ratio on small phones */
+    .brands-grid {
+        gap: 10px;
     }
-    .brand-photo-3, .brand-photo-4 {
-        height: 80px !important;
-    }
-    .brand-photo-5, .brand-photo-6 {
-        height: 75px !important;
-    }
-    .brand-photo-7, .brand-photo-8 {
-        height: 85px !important;
+
+    .brand-photo {
+        aspect-ratio: 3 / 4;
     }
 
     .footer-tune, .footer-tube {
