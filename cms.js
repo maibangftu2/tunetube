@@ -7,7 +7,7 @@
 const CMS = {
     STORAGE_KEY: 'tunetube_cms_content',
     VERSION_KEY: 'tunetube_cms_version',
-    CONTENT_VERSION: '2026.04.01.v8', // Bump: 8-image brands collage + remove brand wall
+    CONTENT_VERSION: '2026.04.03.v9', // Bump: remove Heineken/Nike, fix labels images
     content: null,
 
     // Load content: always fetch fresh content.json, only use localStorage

@@ -477,31 +477,31 @@ img {
 
 .artist-card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: center center;
 }
 
 /* Row 1: Cứ Chill Thôi (left) + Nếu Lỡ Một Ngày (right) */
 .artist-card-large {
-    height: 240px;
+    height: auto;
     transform: rotate(-2deg);
 }
 
 .artist-card-small {
-    height: 240px;
+    height: auto;
     transform: rotate(2deg);
     margin-top: 16px;
 }
 
 /* Row 2: Singer (medium) + Vũ 20:00 (dark) */
 .artist-card-medium {
-    height: 240px;
+    height: auto;
     transform: rotate(1deg);
 }
 
 .artist-card-dark {
-    height: 240px;
+    height: auto;
     transform: rotate(-2deg);
     margin-top: 16px;
 }
@@ -509,7 +509,7 @@ img {
 /* Row 3: Tri Ky OUT NOW - centered */
 .artist-card-promo {
     grid-column: 1 / -1;
-    height: 200px;
+    height: auto;
     transform: rotate(1deg);
     max-width: 55%;
     justify-self: center;
@@ -580,7 +580,7 @@ img {
 /* Brands Grid - spaced grid layout */
 .brands-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     width: 100%;
 }
@@ -1259,16 +1259,16 @@ img {
 
     .artist-card-large,
     .artist-card-small {
-        height: 180px;
+        height: auto;
     }
 
     .artist-card-medium,
     .artist-card-dark {
-        height: 180px;
+        height: auto;
     }
 
     .artist-card-promo {
-        height: 150px;
+        height: auto;
     }
 
     /* Brands grid - 2 columns on tablet */
@@ -1374,31 +1374,31 @@ img {
 
     .artist-card img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        height: auto;
+        object-fit: contain;
         border-radius: 10px;
     }
 
     .artist-card-large {
-        height: 160px;
+        height: auto;
         transform: rotate(-2deg);
         margin: 0;
     }
 
     .artist-card-small {
-        height: 160px;
+        height: auto;
         transform: rotate(2deg);
         margin: 10px 0 0;
     }
 
     .artist-card-medium {
-        height: 160px;
+        height: auto;
         transform: rotate(1deg);
         margin: 0;
     }
 
     .artist-card-dark {
-        height: 160px;
+        height: auto;
         transform: rotate(-2deg);
         margin: 10px 0 0;
     }
@@ -1406,7 +1406,7 @@ img {
     .artist-card-promo {
         grid-column: 1 / -1;
         width: 55%;
-        height: 130px;
+        height: auto;
         justify-self: center;
         transform: rotate(1deg);
         margin: 0 auto;
@@ -1491,11 +1491,11 @@ img {
     .artist-card-small,
     .artist-card-medium,
     .artist-card-dark {
-        height: 130px;
+        height: auto;
     }
 
     .artist-card-promo {
-        height: 100px;
+        height: auto;
         width: 50%;
     }
 
